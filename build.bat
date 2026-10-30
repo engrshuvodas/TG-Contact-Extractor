@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 :: TG Contact Extractor - Windows Build Script
 :: Requires: Python 3.11+, PyInstaller, all dependencies installed
 
@@ -65,6 +65,10 @@ xcopy /e /i /y "assets" "dist\TGContactExtractor\assets" >nul 2>&1
 for %%d in (data sessions exports logs) do (
     if not exist "dist\TGContactExtractor\%%d" mkdir "dist\TGContactExtractor\%%d"
 )
+
+:: Clean temporary build files to avoid opening intermediate files
+if exist build rmdir /s /q build
+if exist TGContactExtractor.spec del /f /q TGContactExtractor.spec
 
 echo.
 echo =============================================

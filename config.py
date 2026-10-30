@@ -1,4 +1,4 @@
-﻿"""
+"""
 TG Contact Extractor - Application Configuration
 """
 import os
@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 APP_NAME = "TG Contact Extractor"
-APP_VERSION = "1.0.0"
-APP_BUILD = "2024.10"
+APP_VERSION = "2.0.0"
+APP_BUILD = "2.0"
 APP_AUTHOR = "TG Contact Extractor"
 APP_DESCRIPTION = "Extract and export contacts from your Telegram private chats"
 

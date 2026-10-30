@@ -63,3 +63,34 @@ class AboutPanel(ctk.CTkFrame):
                     style="primary",
                     command=lambda: webbrowser.open(TELEGRAM_API_URL),
                     height=42, width=280).pack(anchor="center")
+
+        # ── Version History Card ──────────────────────────────────────────
+        v_card = make_card(scroll)
+        v_card.pack(fill="x", padx=30, pady=(16,30))
+        v_inner = ctk.CTkFrame(v_card, fg_color="transparent")
+        v_inner.pack(fill="x", padx=30, pady=24)
+
+        make_label(v_inner, "📜  Version History & Changelog", style="h2").pack(anchor="w")
+        make_label(v_inner, "Recent updates and release notes.", style="small").pack(anchor="w", pady=(2,16))
+
+        changelog = [
+            ("Version 2.0.0 (Current Release)", [
+                "• Dedicated background AsyncLoopManager: Eliminated 'event loop changed' error during OTP verification & dialog extraction.",
+                "• Export Panel UI bugfix: Resolved AttributeError during widget initialization.",
+                "• Windows One-Click Launcher: Added run.bat with automated dependency verification and error retention.",
+                "• Auto-refreshing Export counts when navigating tabs.",
+                "• Refined error reporting and diagnostic logging."
+            ]),
+            ("Version 1.0.0", [
+                "• Initial release with Telegram MTProto API private chat extraction.",
+                "• Multi-step secure authentication (API ID/Hash, OTP verification, 2FA support).",
+                "• Formatted Excel (.xlsx) & CSV export with category filters.",
+                "• SQLite local database storage & dark-themed CustomTkinter UI."
+            ])
+        ]
+
+        for ver_title, items in changelog:
+            make_label(v_inner, ver_title, style="h3").pack(anchor="w", pady=(10,4))
+            for item in items:
+                make_label(v_inner, item, style="small", wraplength=680, justify="left").pack(anchor="w", padx=12, pady=1)
+

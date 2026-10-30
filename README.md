@@ -2,7 +2,7 @@
 
 > **A professional Windows desktop application to extract and export contact information from your Telegram private conversations.**
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -24,6 +24,7 @@
 - [Security & Privacy](#security--privacy)
 - [Important Limitations](#important-limitations)
 - [Error Handling](#error-handling)
+- [Version History & Changelog](#version-history--changelog)
 - [FAQ](#faq)
 - [License](#license)
 
@@ -102,10 +103,13 @@ pip install -r requirements.txt
 python main.py
 ```
 
-### Option 3 — Use Pre-Built Executable
+### Option 3 — Run Built Executable (.EXE)
 
-Download `TGContactExtractor.exe` from the Releases page and run it directly.  
-No Python installation required.
+Double-click `Launch_App_EXE.bat` in the root folder, or navigate to:
+```cmd
+dist\TGContactExtractor\TGContactExtractor.exe
+```
+> **Note**: Always run from `dist\TGContactExtractor\`, not `build\`. The `build\` folder is PyInstaller's temporary compilation workspace, whereas `dist\` contains the complete bundled application and dependencies.
 
 ---
 
@@ -324,6 +328,32 @@ The `data/`, `sessions/`, `exports/`, and `logs/` folders are created automatica
 | DB error | Logged and skipped, extraction continues |
 | Export failure | Error dialog with details |
 | Network timeout | Friendly error message |
+
+---
+
+## Version History & Changelog
+
+### Version 2.0.0 *(Latest)*
+- **AsyncLoopManager Event Loop Engine**:
+  - Implemented persistent dedicated background thread for `asyncio` event loop.
+  - Resolved `RuntimeError: The asyncio event loop must not change after connection` during OTP authentication and private chat extraction.
+- **Export Panel Lifecycle Fix**:
+  - Resolved `AttributeError: 'ExportPanel' object has no attribute '_count_label'` during window startup.
+  - Added safe guards and automatic record count refresh upon switching to the Export tab.
+- **Windows One-Click Launcher (`run.bat`)**:
+  - Automatically identifies Python installation, checks and installs dependencies, and launches the app.
+  - Keeps terminal open on any error for immediate diagnosis.
+- **Accurate Diagnostic Reporting**:
+  - Refined error classification in `authentication.py` to prevent internal exceptions from being falsely labeled as network connection drops.
+- **Automated Regression Suite**:
+  - Added test coverage for event loop stability and singleton behavior (42/42 tests passing).
+
+### Version 1.0.0
+- Initial release of TG Contact Extractor desktop application.
+- 3-step secure Telegram authentication (API credentials, OTP, 2FA support).
+- Full private conversation scanning (saved contacts, non-saved chats, archived chats).
+- Excel (.xlsx) and CSV export with multi-category filters.
+- Local SQLite database storage and CustomTkinter dark-mode desktop interface.
 
 ---
 

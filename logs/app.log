@@ -141,3 +141,19 @@
 [2026-10-31 02:23:22] [INFO    ] database: Account saved: +8801765245872
 [2026-10-31 02:25:26] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-25-26.xlsx (265 rows)
 [2026-10-31 02:26:33] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-26-33.xlsx (35 rows)
+[2026-10-31 02:46:46] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmprmgoj164.db
+[2026-10-31 02:46:46] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpstxnwl16.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpbpobla__.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpoc_0vlxb.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpv3lrtucj.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpp73dxchh.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpbr9nf8ir.db
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpyyde09vs.db
+[2026-10-31 02:46:47] [INFO    ] database: All extracted users cleared.
+[2026-10-31 02:46:47] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpv8_c7qm1.db
+[2026-10-31 02:46:47] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-46-47.xlsx (2 rows)
+[2026-10-31 02:46:47] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-46-47.xlsx (2 rows)
+[2026-10-31 02:46:47] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-46-47.csv (2 rows)
+[2026-10-31 02:46:47] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-46-47.csv (2 rows)
+[2026-10-31 02:46:47] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-46-47.csv (2 rows)
+[2026-10-31 02:54:27] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\data\tg_extractor.db

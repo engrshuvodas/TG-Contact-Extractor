@@ -1,0 +1,521 @@
+# Project: TG Contact Extractor
+
+### A Professional Telegram Private Chat Contact Extraction Software
+
+Act as a senior Python developer, software architect, UI/UX designer, and security engineer.
+
+I want you to build a complete, professional Windows desktop application named **TG Contact Extractor**.
+
+The application should allow users to connect their own Telegram account, scan their private chat history, collect available contact information, and export the collected data into Excel or CSV files.
+
+This must be a fully working application, not just a UI prototype.
+
+Do not leave placeholder buttons, fake data, or incomplete functionality.
+
+---
+
+# 1. MAIN OBJECTIVE
+
+Build a Windows desktop application that extracts available user information from all accessible private conversations of the authenticated Telegram account.
+
+The application should include:
+
+1. Saved contacts.
+2. Non-saved contacts.
+3. Existing private conversations.
+4. Archived private conversations.
+5. Old private conversations accessible through Telegram.
+6. Users who have usernames.
+7. Users who have phone numbers.
+8. Users who have neither a visible username nor a visible phone number.
+
+IMPORTANT:
+
+* Only scan private one-to-one conversations.
+* Do not extract group members.
+* Do not extract channel members.
+* Do not extract bots.
+* Do not extract information that Telegram does not make available to the authenticated account.
+* Never attempt to bypass Telegram privacy restrictions.
+
+# 2. TECHNOLOGY STACK
+
+Use the following technologies:
+
+Backend:
+
+* Python 3.11+
+* Telethon (Telegram MTProto client)
+* asyncio for asynchronous operations.
+
+Frontend:
+
+* CustomTkinter
+* Pillow for icons and image handling.
+
+Database:
+
+* SQLite3
+
+Excel Export:
+
+* OpenPyXL
+
+CSV Export:
+
+* Python CSV module.
+
+Packaging:
+
+* PyInstaller
+
+The software must work on Windows 10 and Windows 11.
+
+No hosting or external server should be required.
+
+# 3. APPLICATION DESIGN
+
+Create a modern, premium SaaS-style desktop interface.
+
+Design preferences:
+
+* Dark navy background.
+* Modern cards.
+* Clean typography.
+* Blue and purple accent colors.
+* Smooth transitions where practical.
+* Rounded buttons.
+* Professional dashboard layout.
+* Responsive window sizing.
+
+Application title:
+TG Contact Extractor
+
+Suggested window size:
+1200 x 750.
+
+Create a left sidebar navigation:
+
+1. Dashboard
+2. Connect Telegram
+3. Extract Contacts
+4. Export Data
+5. History
+6. Settings
+7. About
+
+# 4. TELEGRAM ACCOUNT CONNECTION
+
+Create a secure Telegram login system.
+
+Login workflow:
+
+Step 1:
+Ask the user to enter:
+
+* Telegram API ID
+* Telegram API Hash
+* Phone Number with country code.
+
+Step 2:
+Send Telegram login code using the official Telegram authentication process.
+
+Step 3:
+Display an OTP input field.
+
+Step 4:
+Verify the OTP.
+
+Step 5:
+If two-step verification is enabled, request the 2FA password.
+
+Step 6:
+Successfully authenticate and connect the account.
+
+Requirements:
+
+* Use Telethon.
+* Use the official Telegram API.
+* Support session persistence.
+* Avoid asking for OTP every time if the existing session is valid.
+* Provide a Disconnect Account option.
+* Provide a Logout option.
+* Handle invalid OTP and incorrect passwords.
+* Handle expired sessions.
+* Never log or expose OTP or 2FA passwords.
+* Store session files securely on the user's computer.
+* Never upload session files to external servers.
+
+API ID and API Hash should be entered by the user.
+
+Do not hardcode API credentials.
+
+Provide a link to Telegram's official API development page:
+https://my.telegram.org/apps
+
+# 5. CONTACT EXTRACTION ENGINE
+
+After successful login, show a dashboard.
+
+Add a button:
+
+START EXTRACTION
+
+When clicked, scan accessible private one-to-one conversations.
+
+Include:
+
+* Regular private conversations.
+* Archived private conversations.
+* Existing private chat dialogs.
+* Saved contacts.
+
+Use Telegram's available dialog and contact APIs.
+
+Important implementation details:
+
+* Use Telethon's dialog iteration functionality.
+* Identify private User entities.
+* Exclude groups, channels, bots, and the authenticated user's own account.
+* Avoid extracting duplicate users.
+* Handle deleted or inaccessible users gracefully.
+* Do not assume that every Telegram contact has a phone number.
+* Do not scrape group participants.
+* Do not attempt to recover hidden phone numbers.
+
+For each eligible user, collect available information.
+
+# 6. DATA FIELDS
+
+Store the following fields:
+
+1. Telegram User ID
+2. First Name
+3. Last Name
+4. Full Name
+5. Username
+6. Phone Number
+7. Is Contact
+8. Last Message Date
+9. Chat Type
+10. Extraction Date
+
+Example:
+
+| User ID | Full Name  | Username      | Phone         |
+| ------- | ---------- | ------------- | ------------- |
+| 123456  | John Smith | john123       | +123456789    |
+| 456789  | Alex Brown | alexwork      | Not Available |
+| 789012  | David      | Not Available | +919876543210 |
+
+Rules:
+
+* If username is unavailable, store NULL.
+* If phone number is unavailable, store NULL.
+* Do not invent missing information.
+* Preserve phone numbers as strings.
+* Use User ID as the primary deduplication key.
+
+# 7. EXTRACTION DASHBOARD
+
+Create an attractive dashboard with statistics.
+
+Display:
+
+* Total Private Chats
+* Total Users Found
+* Users With Username
+* Users Without Username
+* Users With Phone Number
+* Users Without Phone Number
+* Saved Contacts
+* Non-Saved Users
+* Archived Chats Scanned
+
+Also display:
+
+* Extraction progress bar.
+* Current extraction status.
+* Number of users processed.
+* Successful records.
+* Failed records.
+
+Add buttons:
+
+START EXTRACTION
+PAUSE
+RESUME
+STOP
+
+The application should remain responsive during extraction.
+
+Use background threading or a suitable asyncio integration so the GUI does not freeze.
+
+# 8. EXCEL EXPORT SYSTEM
+
+This is one of the most important features.
+
+Allow users to export extracted records into Excel.
+
+Supported formats:
+
+* XLSX
+* CSV
+
+Excel file name:
+
+TG_Contacts_YYYY-MM-DD.xlsx
+
+Create the following Excel columns:
+
+| Column | Field             |
+| ------ | ----------------- |
+| A      | User ID           |
+| B      | First Name        |
+| C      | Last Name         |
+| D      | Full Name         |
+| E      | Username          |
+| F      | Phone Number      |
+| G      | Is Contact        |
+| H      | Last Message Date |
+| I      | Chat Type         |
+| J      | Extraction Date   |
+
+Excel formatting:
+
+* Bold header row.
+* Professional header styling.
+* Auto column width.
+* Enable filters.
+* Freeze the header row.
+* Properly format phone numbers as text.
+* Handle empty fields properly.
+
+Additional export options:
+
+1. Export All Users.
+2. Export Users With Username.
+3. Export Users Without Username.
+4. Export Users With Phone Numbers.
+5. Export Users Without Phone Numbers.
+6. Export Saved Contacts.
+7. Export Non-Saved Users.
+
+Allow the user to choose the destination folder.
+
+# 9. DATABASE SYSTEM
+
+Use SQLite.
+
+Create tables for:
+
+* Accounts
+* Extracted Users
+* Extraction History
+* Application Settings
+
+Requirements:
+
+* Automatically create the database on first launch.
+* Save extracted records locally.
+* Avoid duplicate records.
+* Support repeated extraction.
+* Update existing user information when newer data becomes available.
+* Preserve extraction history.
+* Provide a Clear Database option with confirmation.
+
+Never upload user data to any external service.
+
+# 10. ERROR HANDLING
+
+Handle these situations:
+
+* No internet connection.
+* Telegram API unavailable.
+* Invalid API ID.
+* Invalid API Hash.
+* Incorrect OTP.
+* Incorrect 2FA password.
+* Expired Telegram session.
+* FloodWaitError.
+* Network timeout.
+* Deleted Telegram accounts.
+* Missing username.
+* Hidden phone number.
+* Empty private chat list.
+* Excel export failure.
+* Database errors.
+
+If Telegram requests a FloodWait, respect the requested waiting period.
+
+Do not implement aggressive extraction or repeated requests.
+
+Display understandable error messages instead of Python tracebacks.
+
+Save technical logs locally without sensitive authentication information.
+
+# 11. SECURITY AND PRIVACY
+
+Security is extremely important.
+
+Implement:
+
+* Local-only data processing.
+* No external analytics.
+* No cloud database.
+* No unnecessary network requests.
+* No credential sharing.
+* No session-file uploading.
+* Safe handling of API credentials.
+* Confirmation before deleting records.
+* Confirmation before disconnecting accounts.
+
+The application must only access data available to the authenticated Telegram account.
+
+Follow Telegram API Terms and applicable privacy requirements.
+
+# 12. SETTINGS
+
+Create a settings page with:
+
+* Telegram connection status.
+* Connected account information.
+* Database location.
+* Export folder selection.
+* Theme settings.
+* Auto-save option.
+* Clear database.
+* Disconnect account.
+* Application version.
+
+# 13. PROJECT STRUCTURE
+
+Use clean modular architecture.
+
+Suggested structure:
+
+TG-Contact-Extractor/
+│
+├── main.py
+├── requirements.txt
+├── README.md
+├── config.py
+│
+├── core/
+│   ├── telegram_client.py
+│   ├── authentication.py
+│   ├── extractor.py
+│   ├── database.py
+│   └── export_manager.py
+│
+├── gui/
+│   ├── dashboard.py
+│   ├── login.py
+│   ├── extraction.py
+│   ├── export.py
+│   ├── settings.py
+│   └── components.py
+│
+├── utils/
+│   ├── logger.py
+│   ├── helpers.py
+│   └── security.py
+│
+├── assets/
+│   └── icons/
+│
+├── data/
+│
+├── sessions/
+│
+└── exports/
+
+You may improve this architecture if necessary.
+
+# 14. TESTING
+
+Write tests for:
+
+* Telegram user filtering.
+* Private chat identification.
+* Bot exclusion.
+* Group exclusion.
+* Duplicate removal.
+* Missing username handling.
+* Missing phone number handling.
+* SQLite operations.
+* Excel export.
+* CSV export.
+* Error handling.
+
+Use mock Telegram data for automated tests.
+
+Do not require a real Telegram login to run unit tests.
+
+# 15. WINDOWS EXE BUILD
+
+After completing the application:
+
+* Create requirements.txt.
+* Create a README.md.
+* Create a build.bat file.
+* Configure PyInstaller.
+* Generate a Windows executable.
+* Include necessary assets.
+* Ensure the application can run without opening a terminal.
+
+The final executable should be:
+
+TGContactExtractor.exe
+
+Also provide instructions for building the executable again.
+
+# 16. DEVELOPMENT INSTRUCTIONS
+
+Work in the following order:
+
+Phase 1:
+Set up the Python project and dependencies.
+
+Phase 2:
+Implement Telegram authentication.
+
+Phase 3:
+Implement private chat discovery and user extraction.
+
+Phase 4:
+Implement SQLite database.
+
+Phase 5:
+Implement Excel and CSV export.
+
+Phase 6:
+Build the complete CustomTkinter interface.
+
+Phase 7:
+Integrate all modules.
+
+Phase 8:
+Test all features and fix errors.
+
+Phase 9:
+Build the Windows executable.
+
+IMPORTANT DEVELOPMENT RULES:
+
+1. Do not generate the entire project as a single Python file.
+2. Use modular, maintainable code.
+3. Do not create fake extraction results.
+4. Do not use placeholder functionality.
+5. Do not skip error handling.
+6. Do not skip testing.
+7. Do not stop after creating the GUI.
+8. Make sure all buttons actually work.
+9. Test the application before declaring it complete.
+10. If an API limitation prevents a feature, explain it clearly and implement the closest legitimate alternative.
+
+Before starting, inspect the development environment and available dependencies.
+
+Then create the project files and implement the application step by step.
+
+Your final goal is a fully functional, reliable Windows desktop application that allows users to log into their own Telegram account, extract available information from private conversations, and export the results into Excel or CSV.

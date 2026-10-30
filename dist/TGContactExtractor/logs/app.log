@@ -1,0 +1,11 @@
+[2026-10-31 02:59:32] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\dist\TGContactExtractor\data\tg_extractor.db
+[2026-10-31 03:01:29] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\dist\TGContactExtractor\data\tg_extractor.db
+[2026-10-31 03:01:57] [INFO    ] telegram_client: TelegramClient initialised on persistent loop (session path: D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\dist\TGContactExtractor\sessions\tg_extractor_session)
+[2026-10-31 03:02:04] [INFO    ] authentication: OTP sent to +88****
+[2026-10-31 03:02:10] [INFO    ] database: Account saved: +8801765245872
+[2026-10-31 03:03:13] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_03-03-13.xlsx (35 rows)
+[2026-10-31 03:04:05] [INFO    ] database: All extracted users cleared.
+[2026-10-31 03:04:37] [INFO    ] database: All extracted users cleared.
+[2026-10-31 03:05:07] [INFO    ] telegram_client: TelegramClient initialised on persistent loop (session path: D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\dist\TGContactExtractor\sessions\tg_extractor_session)
+[2026-10-31 03:05:14] [INFO    ] authentication: OTP sent to +88****
+[2026-10-31 03:05:20] [INFO    ] database: Account saved: +8801765245872
