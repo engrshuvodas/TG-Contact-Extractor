@@ -1,0 +1,8 @@
+﻿# TG Contact Extractor — Python dependencies
+# Install with: pip install -r requirements.txt
+
+telethon>=1.36.0
+customtkinter>=5.2.2
+Pillow>=10.0.0
+openpyxl>=3.1.0
+pyinstaller>=6.0.0
