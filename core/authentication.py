@@ -112,13 +112,14 @@ class AuthManager:
             except Exception:
                 pass
             return f"Telegram requires you to wait {secs} before trying again."
-        if "network" in s.lower() or "connection" in s.lower():
+        s_lower = s.lower()
+        if any(term in s_lower for term in ["network error", "connection reset", "connection refused", "timeout", "timed out", "cannot connect"]):
             return "Network error. Please check your internet connection."
-        if "api_id" in s.lower():
+        if "api_id" in s_lower:
             return "Invalid API ID. Please check your credentials."
-        if "api_hash" in s.lower():
+        if "api_hash" in s_lower:
             return "Invalid API Hash. Please check your credentials."
-        if "phone_number_invalid" in s.lower():
+        if "phone_number_invalid" in s_lower:
             return "Invalid phone number. Please include country code (+XX...)."
         return f"Error: {s[:200]}"
 

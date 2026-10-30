@@ -146,19 +146,18 @@ class LoginPanel(ctk.CTkFrame):
 
     # ─── Actions ────────────────────────────────────────────────────────────
     def _run_async(self, coro, callback):
-        """Run a coroutine in a background thread and invoke callback with result."""
-        def _worker():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
+        """Run a coroutine on the persistent Telegram event loop and invoke callback with result."""
+        from core.telegram_client import get_async_loop_manager
+        future = get_async_loop_manager().run_coro(coro)
+
+        def _on_future_done(fut):
             try:
-                result = loop.run_until_complete(coro)
+                res = fut.result()
             except Exception as exc:
-                result = {"ok": False, "error": str(exc)}
-            finally:
-                loop.close()
-            self.after(0, lambda: callback(result))
-        t = threading.Thread(target=_worker, daemon=True)
-        t.start()
+                res = {"ok": False, "error": str(exc)}
+            self.after(0, lambda: callback(res))
+
+        future.add_done_callback(_on_future_done)
 
     def _on_send_code(self):
         api_id   = self._api_id_entry.get().strip()

@@ -79,3 +79,65 @@
 [2026-10-31 02:06:10] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-06-10.csv (2 rows)
 [2026-10-31 02:06:10] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-06-10.csv (2 rows)
 [2026-10-31 02:06:10] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-06-10.csv (2 rows)
+[2026-10-31 02:06:46] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\data\tg_extractor.db
+[2026-10-31 02:07:15] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\data\tg_extractor.db
+[2026-10-31 02:08:16] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\data\tg_extractor.db
+[2026-10-31 02:10:49] [INFO    ] telegram_client: TelegramClient initialised (session path: D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\sessions\tg_extractor_session)
+[2026-10-31 02:10:55] [INFO    ] authentication: OTP sent to +88****
+[2026-10-31 02:11:05] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:12] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:13] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:13] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:13] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:14] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:42] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:42] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:43] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:43] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:11:45] [INFO    ] telegram_client: TelegramClient initialised (session path: D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\sessions\tg_extractor_session)
+[2026-10-31 02:11:46] [INFO    ] authentication: OTP sent to +88****
+[2026-10-31 02:12:02] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:12:48] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:12:49] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:12:50] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:12:50] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:16:13] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:16:14] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:16:15] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpj3vui38l.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpviu5ejth.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpdw9xcba8.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpfau7ed5y.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmp62gu1e6p.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpqwtq67ul.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmp0jy0yumt.db
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmp2vopxxdw.db
+[2026-10-31 02:19:03] [INFO    ] database: All extracted users cleared.
+[2026-10-31 02:19:03] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpn6bwdhyc.db
+[2026-10-31 02:19:03] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-19-03.xlsx (2 rows)
+[2026-10-31 02:19:03] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-19-03.xlsx (2 rows)
+[2026-10-31 02:19:03] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-03.csv (2 rows)
+[2026-10-31 02:19:03] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-03.csv (2 rows)
+[2026-10-31 02:19:04] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-04.csv (2 rows)
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpvr17vmnz.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpigmy73dr.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpammeud2v.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpv0vguosq.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpwjxvy8e3.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpnblnfgp3.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpl3hb_8l6.db
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpm09k7syu.db
+[2026-10-31 02:19:55] [INFO    ] database: All extracted users cleared.
+[2026-10-31 02:19:55] [INFO    ] database: Database initialised at C:\Users\SHUVO\AppData\Local\Temp\tmpf3myp90f.db
+[2026-10-31 02:19:56] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-19-56.xlsx (2 rows)
+[2026-10-31 02:19:56] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-19-56.xlsx (2 rows)
+[2026-10-31 02:19:56] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-56.csv (2 rows)
+[2026-10-31 02:19:56] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-56.csv (2 rows)
+[2026-10-31 02:19:56] [INFO    ] export_manager: CSV exported: TG_Contacts_2026-10-31_02-19-56.csv (2 rows)
+[2026-10-31 02:21:14] [ERROR   ] authentication: verify_code error: The asyncio event loop must not change after connection (see the FAQ for details)
+[2026-10-31 02:21:25] [INFO    ] database: Database initialised at D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\data\tg_extractor.db
+[2026-10-31 02:22:28] [INFO    ] telegram_client: TelegramClient initialised on persistent loop (session path: D:\WIN\DOCUMENTS\GitHub\TG Contact Extractor\sessions\tg_extractor_session)
+[2026-10-31 02:22:28] [INFO    ] authentication: OTP sent to +88****
+[2026-10-31 02:23:22] [INFO    ] database: Account saved: +8801765245872
+[2026-10-31 02:25:26] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-25-26.xlsx (265 rows)
+[2026-10-31 02:26:33] [INFO    ] export_manager: Excel exported: TG_Contacts_2026-10-31_02-26-33.xlsx (35 rows)

@@ -1,6 +1,8 @@
-"""Telethon client wrapper with session persistence."""
+"""Telethon client wrapper with session persistence and dedicated async loop."""
 import asyncio
+import concurrent.futures
 import sys
+import threading
 from pathlib import Path
 from typing import Optional, Callable, Any
 
@@ -11,6 +13,50 @@ from utils.logger import get_logger
 log = get_logger("telegram_client")
 
 
+class AsyncLoopManager:
+    """Manages a single persistent asyncio event loop on a dedicated background thread."""
+
+    def __init__(self):
+        self._loop: Optional[asyncio.AbstractEventLoop] = None
+        self._thread: Optional[threading.Thread] = None
+        self._ready = threading.Event()
+        self._start()
+
+    def _start(self):
+        def _runner():
+            self._loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(self._loop)
+            self._ready.set()
+            self._loop.run_forever()
+
+        self._thread = threading.Thread(target=_runner, daemon=True, name="TelegramEventLoopThread")
+        self._thread.start()
+        self._ready.wait()
+
+    @property
+    def loop(self) -> asyncio.AbstractEventLoop:
+        return self._loop
+
+    def run_coro(self, coro) -> concurrent.futures.Future:
+        """Submit a coroutine to the background loop and return a concurrent.futures.Future."""
+        return asyncio.run_coroutine_threadsafe(coro, self._loop)
+
+    def run_coro_sync(self, coro, timeout: Optional[float] = None) -> Any:
+        """Run coroutine and wait synchronously for the result."""
+        future = self.run_coro(coro)
+        return future.result(timeout=timeout)
+
+
+_loop_manager: Optional[AsyncLoopManager] = None
+
+
+def get_async_loop_manager() -> AsyncLoopManager:
+    global _loop_manager
+    if _loop_manager is None:
+        _loop_manager = AsyncLoopManager()
+    return _loop_manager
+
+
 class TelegramClientWrapper:
     """Wraps Telethon client with lifecycle management."""
 
@@ -18,7 +64,11 @@ class TelegramClientWrapper:
         self._client = None
         self._api_id: Optional[int] = None
         self._api_hash: Optional[str] = None
-        self._loop: Optional[asyncio.AbstractEventLoop] = None
+        self._loop_mgr = get_async_loop_manager()
+
+    @property
+    def loop(self) -> asyncio.AbstractEventLoop:
+        return self._loop_mgr.loop
 
     def _session_path(self) -> str:
         return str(SESSIONS_DIR / SESSION_NAME)
@@ -30,17 +80,21 @@ class TelegramClientWrapper:
         return self._client
 
     def init_client(self, api_id: int, api_hash: str):
-        """Create a new Telethon client (does NOT connect yet)."""
+        """Create a new Telethon client tied to the persistent event loop."""
         from telethon import TelegramClient
         if self._client:
-            self._client.disconnect()
+            try:
+                self._loop_mgr.run_coro_sync(self.disconnect(), timeout=3)
+            except Exception:
+                pass
         self._api_id = api_id
         self._api_hash = api_hash
         self._client = TelegramClient(
             self._session_path(), api_id, api_hash,
+            loop=self._loop_mgr.loop,
             system_version="Windows 10",
         )
-        log.info("TelegramClient initialised (session path: %s)", self._session_path())
+        log.info("TelegramClient initialised on persistent loop (session path: %s)", self._session_path())
         return self._client
 
     async def is_authorised(self) -> bool:
@@ -63,7 +117,6 @@ class TelegramClientWrapper:
 
     async def sign_in_2fa(self, password: str):
         client = self._get_client()
-        from telethon.errors import SessionPasswordNeededError
         return await client.sign_in(password=password)
 
     async def get_me(self):
@@ -102,3 +155,4 @@ def get_client_wrapper() -> TelegramClientWrapper:
     if _client_wrapper is None:
         _client_wrapper = TelegramClientWrapper()
     return _client_wrapper
+

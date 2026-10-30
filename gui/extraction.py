@@ -141,17 +141,18 @@ class ExtractionPanel(ctk.CTkFrame):
         self._thread.start()
 
     def _run_extraction(self):
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
+        from core.telegram_client import get_async_loop_manager
         try:
-            loop.run_until_complete(
+            get_async_loop_manager().run_coro_sync(
                 self._extractor.extract(
                     on_progress=self._on_progress,
                     on_user_found=self._on_user_found,
                 )
             )
+        except Exception as e:
+            from utils.logger import get_logger
+            get_logger("extraction").error("Extraction error: %s", e)
         finally:
-            loop.close()
             self.after(0, self._on_extraction_done)
 
     def _on_progress(self, msg, stats):

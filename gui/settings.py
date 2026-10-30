@@ -109,14 +109,8 @@ class SettingsPanel(ctk.CTkFrame):
         if not messagebox.askyesno("Disconnect",
                 "Disconnect your account?\nYour session will remain valid for future use."):
             return
-        def _do():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            try:
-                loop.run_until_complete(get_client_wrapper().disconnect())
-            finally:
-                loop.close()
-        threading.Thread(target=_do, daemon=True).start()
+        from core.telegram_client import get_async_loop_manager
+        get_async_loop_manager().run_coro(get_client_wrapper().disconnect())
         self._set_status("Disconnected.", "success")
 
     def _logout(self):
@@ -125,12 +119,11 @@ class SettingsPanel(ctk.CTkFrame):
                 icon="warning"):
             return
         def _do():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
+            from core.telegram_client import get_async_loop_manager
             try:
-                loop.run_until_complete(get_client_wrapper().logout())
-            finally:
-                loop.close()
+                get_async_loop_manager().run_coro_sync(get_client_wrapper().logout(), timeout=10)
+            except Exception:
+                pass
             acct = self.db.get_active_account()
             if acct:
                 self.db.deactivate_account(acct["phone"])

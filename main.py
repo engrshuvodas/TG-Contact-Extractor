@@ -211,11 +211,10 @@ class App(ctk.CTk):
     def _on_login_success(self):
         """Called after successful Telegram authentication."""
         def _fetch_and_save():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
             try:
+                from core.telegram_client import get_async_loop_manager
                 wrapper = get_client_wrapper()
-                me = loop.run_until_complete(wrapper.get_me())
+                me = get_async_loop_manager().run_coro_sync(wrapper.get_me(), timeout=10)
                 if me:
                     phone = getattr(me, "phone", "") or ""
                     from utils.helpers import safe_str
@@ -231,8 +230,6 @@ class App(ctk.CTk):
                     self.after(0, lambda: self._status_badge.set_connected(name))
             except Exception as e:
                 log.error("Could not fetch self info: %s", e)
-            finally:
-                loop.close()
         threading.Thread(target=_fetch_and_save, daemon=True).start()
         self.navigate("dashboard")
 
